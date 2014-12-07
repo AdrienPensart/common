@@ -7,25 +7,25 @@
 
 namespace Common
 {
-    class Exception : public std::exception
-    {
+	class Exception : public std::exception
+	{
 		public:
 
-			Exception(const std::string& msgArg="Generic Common Exception") : 
+			Exception(const std::string& msgArg="Generic Common Exception") :
 				msg(msgArg)
 			{
 			}
-			
+
 			virtual ~Exception() throw()
 			{
 			}
-			
+
 			virtual const char * what() const throw ()
 			{
 				return msg.c_str();
 			}
-			
-        protected:
+
+		protected:
 
 			void setMessage(const std::string& msgArg)
 			{
@@ -33,7 +33,7 @@ namespace Common
 			}
 
 		private:
-			
+
 			std::string msg;
-    };
+	};
 } // Common

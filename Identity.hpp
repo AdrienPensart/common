@@ -123,14 +123,14 @@ namespace Common
 
 		private:
 
-			std::string computer;
 			std::string ip;
-			std::string os;
 			std::string module;
-			std::string executionDate;
 			std::string buildId;
 			std::string buildDate;
 			std::string buildTime;
 			std::string buildTimestamp;
+            std::string executionDate;
+            std::string os;
+            std::string computer;
 	};
 } // Common
