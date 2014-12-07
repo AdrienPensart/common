@@ -9,7 +9,7 @@ namespace Common
 		  
 		private:
 
-			NonCopyable( const NonCopyable& that ) {}
-			NonCopyable& operator=( const NonCopyable& that ) { return *this; }
+            NonCopyable( const NonCopyable& /*that*/ ) {}
+            NonCopyable& operator=( const NonCopyable& /*that*/ ) { return *this; }
     };
 } // Common 
