@@ -4,15 +4,16 @@
 #include <ctime>
 #include <string>
 #include <algorithm>
-#include <sstream> 
+#include <sstream>
 
 // hack to quote string at compile time
 #define Q(x) #x
 #define QUOTE(x) Q(x)
-
+/*
 // hack to comment log lines when in release mode
 #define COMMENT SLASH(/)
 #define SLASH(s) /##s
+*/
 
 namespace Common
 {
