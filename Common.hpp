@@ -5,7 +5,7 @@
 #endif
 
 // hack to uniform subsystems in windows
-#ifdef INNOCENCE_DEBUG
+#if defined(INNOCENCE_DEBUG) || !defined(WIN32)
 #define INNOCENCE_MAIN \
 int main(int argc, char * argv[]) \
 { \
