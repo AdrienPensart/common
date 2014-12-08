@@ -129,8 +129,8 @@ namespace Common
 			std::string buildDate;
 			std::string buildTime;
 			std::string buildTimestamp;
-            std::string executionDate;
-            std::string os;
-            std::string computer;
+			std::string executionDate;
+			std::string os;
+			std::string computer;
 	};
 } // Common
