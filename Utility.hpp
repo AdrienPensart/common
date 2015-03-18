@@ -61,9 +61,12 @@ namespace Common
 		using std::string;
 		size_t cursor = 0;
 		size_t found = 0;
-		while(found != string::npos)
+        while(true)
 		{
 			found = str.find(separator, cursor);
+            if(found == string::npos){
+                break;
+            }
 			string elem = str.substr(cursor,found-cursor);
 			results.push_back(elem);
 			cursor = found + separator.size();
