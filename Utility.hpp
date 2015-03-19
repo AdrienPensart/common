@@ -56,20 +56,21 @@ namespace Common
 		return mytime;
 	}
 
-	inline void split(const std::string& str, const std::string& separator, std::vector<std::string>& results)
+    inline void split(const std::string& input, const std::string& delimiter, std::vector<std::string>& output)
 	{
-		using std::string;
-		size_t cursor = 0;
-		size_t found = 0;
-        while(true)
-		{
-			found = str.find(separator, cursor);
-            if(found == string::npos){
-                break;
+        size_t start = 0;
+        size_t end = 0;
+        while (start != std::string::npos && end != std::string::npos)
+        {
+            start = input.find_first_not_of(delimiter, end);
+            if (start != std::string::npos)
+            {
+                end = input.find_first_of(delimiter, start);  
+                if (end != std::string::npos)
+                    output.push_back(input.substr(start, end - start));
+                else
+                    output.push_back(input.substr(start));
             }
-			string elem = str.substr(cursor,found-cursor);
-			results.push_back(elem);
-			cursor = found + separator.size();
-		}
+        }
 	}
 } // Common
