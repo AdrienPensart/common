@@ -15,30 +15,25 @@
 #define SLASH(s) /##s
 */
 
-namespace Common
-{
+namespace Common {
 	template<typename T>
-	std::string toString( const T & Value )
-	{
+	std::string toString( const T & Value ) {
 		std::ostringstream oss;
 		oss << Value;
 		return oss.str();
 	}
 
-	inline std::string toString( const std::wstring & Value )
-	{
+	inline std::string toString( const std::wstring & Value ) {
 		return std::string( Value.begin(), Value.end() );
 	}
 
 	template<typename T>
-	bool fromString( const std::string & Str, T & Dest )
-	{
+	bool fromString( const std::string & Str, T & Dest ) {
 		std::istringstream iss( Str );
 		return iss >> Dest != 0;
 	}
 
-	inline std::string currentTime()
-	{
+	inline std::string currentTime() {
 		time_t     now = time(0);
 		struct tm  tstruct;
 		char       buf[80];
@@ -47,8 +42,7 @@ namespace Common
 		return buf;
 	}
 
-	inline std::string currentDate()
-	{
+	inline std::string currentDate() {
 		time_t now;
 		time(&now);
 		std::string mytime = ctime(&now);
@@ -56,21 +50,18 @@ namespace Common
 		return mytime;
 	}
 
-    inline void split(const std::string& input, const std::string& delimiter, std::vector<std::string>& output)
-	{
-        size_t start = 0;
-        size_t end = 0;
-        while (start != std::string::npos && end != std::string::npos)
-        {
-            start = input.find_first_not_of(delimiter, end);
-            if (start != std::string::npos)
-            {
-                end = input.find_first_of(delimiter, start);  
-                if (end != std::string::npos)
-                    output.push_back(input.substr(start, end - start));
-                else
-                    output.push_back(input.substr(start));
-            }
-        }
+	inline void split(const std::string& input, const std::string& delimiter, std::vector<std::string>& output) {
+		size_t start = 0;
+		size_t end = 0;
+		while (start != std::string::npos && end != std::string::npos) {
+			start = input.find_first_not_of(delimiter, end);
+			if (start != std::string::npos) {
+				end = input.find_first_of(delimiter, start);
+				if (end != std::string::npos)
+					output.push_back(input.substr(start, end - start));
+				else
+					output.push_back(input.substr(start));
+			}
+		}
 	}
 } // Common

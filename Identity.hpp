@@ -7,109 +7,93 @@
 #include "Utility.hpp"
 #include "Serializable.hpp"
 
-namespace Common
-{
-	namespace Private
-	{
+namespace Common {
+	namespace Private {
 		static const char * marker = "I#I";
 	}
 
-	class Identity : public Serializable
-	{
+	class Identity : public Serializable {
 		public:
 
 			Identity
-				(
-					const std::string& moduleArg="",
-					const std::string& buildIdArg="",
-					const std::string& buildDateArg="",
-					const std::string& buildTimeArg="",
-					const std::string& buildTimestampArg=""
-				) :
+			(
+			    const std::string& moduleArg="",
+			    const std::string& buildIdArg="",
+			    const std::string& buildDateArg="",
+			    const std::string& buildTimeArg="",
+			    const std::string& buildTimestampArg=""
+			) :
 				module(moduleArg),
 				buildId(buildIdArg),
 				buildDate(buildDateArg),
 				buildTime(buildTimeArg),
 				buildTimestamp(buildTimestampArg),
 				executionDate(currentDate()),
-				#ifdef WIN32
-					os(System::getSystemVersionString()),
-					computer(System::getCompleteComputerName())
-				#else
-					os("linux"),
-					computer("linux")
-				#endif
+#ifdef WIN32
+				os(System::getSystemVersionString()),
+				computer(System::getCompleteComputerName())
+#else
+				os("linux"),
+				computer("linux")
+#endif
 			{
 			}
 
-			const std::string& getModule() const
-			{
+			const std::string& getModule() const {
 				return module;
 			}
 
-			const std::string& getBuildId() const
-			{
+			const std::string& getBuildId() const {
 				return buildId;
 			}
 
-			const std::string& getBuildDate() const
-			{
+			const std::string& getBuildDate() const {
 				return buildDate;
 			}
 
-			const std::string& getBuildTime() const
-			{
+			const std::string& getBuildTime() const {
 				return buildTime;
 			}
 
-			const std::string& getBuildTimestamp() const
-			{
+			const std::string& getBuildTimestamp() const {
 				return buildTimestamp;
 			}
 
-			std::string getLogFile() const
-			{
+			std::string getLogFile() const {
 				return module + "-" + buildId + "-" + Common::currentTime() + ".log";
 			}
 
-			const std::string& getExecutionDate() const
-			{
+			const std::string& getExecutionDate() const {
 				return executionDate;
 			}
 
-			const std::string& getComputer() const
-			{
+			const std::string& getComputer() const {
 				return computer;
 			}
 
-			const std::string& getOs() const
-			{
+			const std::string& getOs() const {
 				return os;
 			}
 
-			const std::string& getIp() const
-			{
+			const std::string& getIp() const {
 				return ip;
 			}
 
-			void setIp(const std::string& ipArg)
-			{
+			void setIp(const std::string& ipArg) {
 				ip = ipArg;
 			}
 
-			std::string serialize() const
-			{
+			std::string serialize() const {
 				return module + Private::marker +
-					   computer + Private::marker +
-					   os + Private::marker +
-					   buildId + Private::marker +
-					   buildDate + Private::marker +
-					   buildTime + Private::marker +
-					   buildTimestamp;
+				       computer + Private::marker +
+				       os + Private::marker +
+				       buildId + Private::marker +
+				       buildDate + Private::marker +
+				       buildTime + Private::marker +
+				       buildTimestamp;
 			}
 
-			void deserialize(const std::string& buffer)
-			{
+			void deserialize(const std::string& buffer) {
 				std::vector<std::string> output;
 				split(buffer, Private::marker, output);
 				module = output[0];

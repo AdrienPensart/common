@@ -5,30 +5,24 @@
 #include <typeinfo>
 #include "Utility.hpp"
 
-namespace Common
-{
-	class Exception : public std::exception
-	{
+namespace Common {
+	class Exception : public std::exception {
 		public:
 
 			Exception(const std::string& msgArg="Generic Common Exception") :
-				msg(msgArg)
-			{
+				msg(msgArg) {
 			}
 
-			virtual ~Exception() throw()
-			{
+			virtual ~Exception() throw() {
 			}
 
-			virtual const char * what() const throw ()
-			{
+			virtual const char * what() const throw () {
 				return msg.c_str();
 			}
 
 		protected:
 
-			void setMessage(const std::string& msgArg)
-			{
+			void setMessage(const std::string& msgArg) {
 				msg = msgArg;
 			}
 

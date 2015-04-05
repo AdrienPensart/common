@@ -2,20 +2,17 @@
 
 #include "NonCopyable.hpp"
 
-namespace Common
-{
+namespace Common {
 	template<class T>
-	class Singleton : public NonCopyable
-	{
+	class Singleton : public NonCopyable {
 		public:
-			static T& instance()
-			{
+			static T& instance() {
 				static T single_instance;
 				return single_instance;
 			}
 		protected:
-			Singleton(){}
-			~Singleton(){}
+			Singleton() {}
+			~Singleton() {}
 	};
 
 } // Common

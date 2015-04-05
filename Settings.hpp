@@ -2,18 +2,15 @@
 
 #include <string>
 
-namespace Common
-{
-	enum
-	{
+namespace Common {
+	enum {
 		CONNECTION_INFO_SIZE = 256,
 		INNOCENCE_PORT = 80,
 		LOG_COLLECTOR_PORT = 81,
 		AUDIT_SERVER_PORT = 82
 	};
 
-	struct ConnectionInfo
-	{
+	struct ConnectionInfo {
 		std::string name;
 		std::string ip;
 		unsigned short port;
@@ -22,9 +19,9 @@ namespace Common
 
 	const static char blaspheme [CONNECTION_INFO_SIZE] = "*#+127.0.0.1:80:default:crunch*#+";
 
-	#define MARKER_SIZE 3
-	#define MARKER "*#+"
-	#define SEPERATOR ':'
+#define MARKER_SIZE 3
+#define MARKER "*#+"
+#define SEPERATOR ':'
 
 	// AUDITOR AGENT & SERVER CONFIG
 	static const char * LOG_DB_CONNECTION_STRING = "root/p4ssw0rd@innocence";
@@ -36,31 +33,31 @@ namespace Common
 	static const char * ISINJECTED_PROOF = "INJECTED";
 
 	// MASTER & SLAVE PROTOCOL CONFIG
-	#define HIBERNATE           "hibernate"
-	#define SHUTDOWN            "shutdown"
-	#define REBOOT              "reboot"
-	#define LOGOUT              "logout"
-	#define KILL_PROCESS        "kill_process"
-	#define KILL_CLIENT         "kill_client"
-	#define UNINSTALL_CLIENT    "uninstall_client"
-	#define REBOOT_CLIENT       "reboot_server"
-	#define UPGRADE_CLIENT      "update_client"
-	#define PASSWORDS_GETALL    "passwords_getall"
-	#define GET_PROCESSLIST     "get_processlist"
-	#define GET_WINDOWS_VERSION "get_windows_version"
-	#define GET_CLIENT_NAME     "get_client_name"
-	#define REMOTE_SHELL        "remote_shell"
-	#define BROWSE_FILES        "browse_files"
-	#define GET_SCREEN          "get_screen"
-	#define GET_LOGFILE         "get_logfile"
-	#define START_DOWNLOAD      "start_download"
-	#define START_UPLOAD        "start_upload"
+#define HIBERNATE           "hibernate"
+#define SHUTDOWN            "shutdown"
+#define REBOOT              "reboot"
+#define LOGOUT              "logout"
+#define KILL_PROCESS        "kill_process"
+#define KILL_CLIENT         "kill_client"
+#define UNINSTALL_CLIENT    "uninstall_client"
+#define REBOOT_CLIENT       "reboot_server"
+#define UPGRADE_CLIENT      "update_client"
+#define PASSWORDS_GETALL    "passwords_getall"
+#define GET_PROCESSLIST     "get_processlist"
+#define GET_WINDOWS_VERSION "get_windows_version"
+#define GET_CLIENT_NAME     "get_client_name"
+#define REMOTE_SHELL        "remote_shell"
+#define BROWSE_FILES        "browse_files"
+#define GET_SCREEN          "get_screen"
+#define GET_LOGFILE         "get_logfile"
+#define START_DOWNLOAD      "start_download"
+#define START_UPLOAD        "start_upload"
 
-	#define SUCCESS             "success"
-	#define FAILURE             "failure"
-	#define UNKNOW_CMD          "unknow_cmd"
-	#define KEYLOG_EMPTY        "keylog_empty"
-	#define FINISHED            "finished"
+#define SUCCESS             "success"
+#define FAILURE             "failure"
+#define UNKNOW_CMD          "unknow_cmd"
+#define KEYLOG_EMPTY        "keylog_empty"
+#define FINISHED            "finished"
 
 	static const char * KEYLOG = "system_output.txt";
 	static const char * SCREEN_PATH = "sleeper_downloaded_screenshot.jpg";

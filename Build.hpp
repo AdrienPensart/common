@@ -3,8 +3,7 @@
 #include "Identity.hpp"
 #include "Common.hpp"
 
-namespace Common
-{
+namespace Common {
 
 #define BUILD 164
 

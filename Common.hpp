@@ -1,7 +1,7 @@
 #pragma once
 
 #ifdef WIN32
-	#include <system/Process.hpp>
+#include <system/Process.hpp>
 #endif
 
 // hack to uniform subsystems in windows
