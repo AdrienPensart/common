@@ -5,6 +5,7 @@
 #include <string>
 #include <algorithm>
 #include <sstream>
+#include <iterator>
 
 // hack to quote string at compile time
 #define Q(x) #x
@@ -64,4 +65,11 @@ namespace Common {
 			}
 		}
 	}
+
+    inline std::string implode(const std::vector<std::string>& strings, const std::string& delim = ",") {
+        std::ostringstream imploded;
+        std::copy(strings.begin(), strings.end(), std::ostream_iterator<std::string>(imploded, delim.c_str()));
+        std::string str = imploded.str();
+        return str.substr(0, str.size()-1);
+    }
 } // Common
