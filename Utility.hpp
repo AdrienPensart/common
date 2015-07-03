@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <sstream>
 #include <iterator>
+#include <fstream>
+#include <streambuf>
 
 // hack to quote string at compile time
 #define Q(x) #x
@@ -66,10 +68,21 @@ namespace Common {
 		}
 	}
 
-    inline std::string implode(const std::vector<std::string>& strings, const std::string& delim = ",") {
-        std::ostringstream imploded;
-        std::copy(strings.begin(), strings.end(), std::ostream_iterator<std::string>(imploded, delim.c_str()));
-        std::string str = imploded.str();
-        return str.substr(0, str.size()-1);
-    }
+	inline std::string implode(const std::vector<std::string>& strings, const std::string& delim = ",") {
+		std::ostringstream imploded;
+		std::copy(strings.begin(), strings.end(), std::ostream_iterator<std::string>(imploded, delim.c_str()));
+		std::string str = imploded.str();
+		return str.substr(0, str.size()-1);
+	}
+
+	inline void read_file(const std::string& filepath, std::string& filecontent){
+		std::ifstream file(filepath);
+		file.seekg(0, std::ios::end);
+		filecontent.reserve(file.tellg());
+		file.seekg(0, std::ios::beg);
+		filecontent.assign((std::istreambuf_iterator<char>(file)),
+					std::istreambuf_iterator<char>());
+		file.close();
+	}
+
 } // Common
