@@ -33,7 +33,7 @@ namespace Common {
 	template<typename T>
 	bool fromString( const std::string & Str, T & Dest ) {
 		std::istringstream iss( Str );
-		return iss >> Dest != 0;
+		return static_cast<bool>(iss >> Dest);
 	}
 
 	inline std::string currentTime() {
