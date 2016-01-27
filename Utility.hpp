@@ -68,7 +68,8 @@ namespace Common {
 		}
 	}
 
-	inline std::string implode(const std::vector<std::string>& strings, const std::string& delim = ",") {
+    template<class Container>
+    inline std::string implode(const Container& strings, const std::string& delim = ",") {
 		std::ostringstream imploded;
 		std::copy(strings.begin(), strings.end(), std::ostream_iterator<std::string>(imploded, delim.c_str()));
 		std::string str = imploded.str();
