@@ -53,7 +53,8 @@ namespace Common {
 		return mytime;
 	}
 
-	inline void split(const std::string& input, const std::string& delimiter, std::vector<std::string>& output) {
+    template<class Container>
+    inline void split(const std::string& input, const std::string& delimiter, Container& output) {
 		size_t start = 0;
 		size_t end = 0;
 		while (start != std::string::npos && end != std::string::npos) {
@@ -61,9 +62,9 @@ namespace Common {
 			if (start != std::string::npos) {
 				end = input.find_first_of(delimiter, start);
 				if (end != std::string::npos)
-					output.push_back(input.substr(start, end - start));
+                    output.insert(output.end(), input.substr(start, end - start));
 				else
-					output.push_back(input.substr(start));
+                    output.insert(output.end(), input.substr(start));
 			}
 		}
 	}
@@ -86,4 +87,11 @@ namespace Common {
 		file.close();
 	}
 
+    template <typename M, typename V>
+    void MapToVec( const  M & m, V & v ) {
+        v.clear();
+        for( typename M::const_iterator it = m.begin(); it != m.end(); ++it ) {
+            v.push_back( it->second );
+        }
+    }
 } // Common
