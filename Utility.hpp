@@ -8,7 +8,7 @@
 #include <iterator>
 #include <fstream>
 #include <streambuf>
-
+#include <iostream>
 // hack to quote string at compile time
 #define Q(x) #x
 #define QUOTE(x) Q(x)
@@ -79,12 +79,15 @@ namespace Common {
 
 	inline void read_file(const std::string& filepath, std::string& filecontent){
 		std::ifstream file(filepath);
-		file.seekg(0, std::ios::end);
-		filecontent.reserve(file.tellg());
-		file.seekg(0, std::ios::beg);
-		filecontent.assign((std::istreambuf_iterator<char>(file)),
-					std::istreambuf_iterator<char>());
-		file.close();
+        if(file.good()){
+            file.seekg(0, std::ios::end);
+            filecontent.reserve(file.tellg());
+            file.seekg(0, std::ios::beg);
+            filecontent.assign((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+            file.close();
+        } else {
+            std::cout << "invalid file " << filepath << std::endl;
+        }
 	}
 
     template <typename M, typename V>
